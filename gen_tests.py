@@ -3,12 +3,11 @@
 '''
 $Id: gen_tests.py,v 1.15 2005/01/07 04:51:30 zenzen Exp $
 '''
+from __future__ import print_function
 
 import os, os.path, re, subprocess, sys
 from gen_tzinfo import allzones
 import gen_tzinfo
-from time import strptime
-from datetime import datetime, timedelta
 
 zdump = os.path.abspath(os.path.join(
         os.path.dirname(__file__), 'build','etc','zdump'
@@ -20,7 +19,7 @@ def main():
     datf = open(os.path.join(dest_dir, 'zdump.out'), 'w')
 
     for zone in allzones():
-        print 'Collecting zdump(1) output for %s in zdump.out' % (zone,)
+        print('Collecting zdump(1) output for %s in zdump.out' % (zone,))
         tname = zone.replace(
                 '+', '_plus_').replace('-', '_minus_').replace('/','_')
         # We don't yet support v2 format tzfile(5) files, so limit
@@ -35,7 +34,7 @@ def main():
             if not line.decode('utf-8').strip().endswith('NULL')]
 
         for line in lines:
-            print >> datf, line
+            print(line, file=datf)
     datf.flush()
     datf.close()
 
