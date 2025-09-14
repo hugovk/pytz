@@ -20,6 +20,7 @@ PYTHON310=python3.10
 PYTHON311=python3.11
 PYTHON312=python3.12
 PYTHON313=python3.13
+PYTHON313=python3.14
 PYTHON2=/usr/bin/python2
 PYTHON3=/usr/bin/python3
 PYTHON=${PYTHON3}
